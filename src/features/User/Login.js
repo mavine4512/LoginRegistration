@@ -17,11 +17,11 @@ const Login = () => {
         dispatch(loginUser(data));
     };
 
-    // useEffect(() => {
-    //     return () => {
-    //         dispatch(clearState());
-    //     };
-    // },[dispatch]);
+    useEffect(() => {
+        return () => {
+            dispatch(clearState());
+        };
+    },[dispatch]);
 
     useEffect(() => {
         if (isError) {
@@ -40,7 +40,7 @@ const Login = () => {
             <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-md">
                     <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                        Sign in to your account
+                        Sign in
                     </h2>
                 </div>
                 <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -63,11 +63,11 @@ const Login = () => {
                                         name="email"
                                         type="email"
                                         autoComplete="email"
-                                        ref={register({
+                                        ref={{...register('test',{
                                             pattern: /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/i,
-                                        })}
+                                        })}}
                                         required
-                                        className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                        className="appearance-none block w-full px-3 py-2 border border-blue-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                     />
                                 </div>
                             </div>
@@ -84,7 +84,7 @@ const Login = () => {
                                         id="password"
                                         name="password"
                                         type="password"
-                                        ref={register({ required: true })}
+                                        ref={{...register('test', { required: true })}}
                                         autoComplete="current-password"
                                         required
                                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"

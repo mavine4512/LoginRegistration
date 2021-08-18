@@ -18,11 +18,11 @@ const Signup = () => {
         dispatch(signupUser(data));
     };
 
-    // useEffect(() => {
-    //     return () => {
-    //         dispatch(clearState());
-    //     };
-    // },[dispatch]);
+    useEffect(() => {
+        return () => {
+            dispatch(clearState());
+        };
+    },[dispatch]);
 
     useEffect(() => {
         if (isSuccess) {
@@ -63,7 +63,7 @@ const Signup = () => {
                                         id="name"
                                         name="name"
                                         type="text"
-                                        ref={register({ required: true })}
+                                        ref={{...register('test',{ required: true })}}
                                         autocomplete="name"
                                         required
                                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -72,15 +72,22 @@ const Signup = () => {
                             </div>
                             <div>
                                 <div className="mt-1">
+                                    <label
+                                        for="email"
+                                        className="block text-sm font-medium text-gray-700"
+                                    >
+                                        Email
+                                    </label>
+
                                     <input
                                         id="email"
                                         name="email"
                                         type="email"
                                         autocomplete="email"
                                         required
-                                        ref={register({
+                                        ref={{...register('test',{
                                             pattern: /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/i,
-                                        })}
+                                        })}}
                                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                     />
                                 </div>
@@ -98,7 +105,7 @@ const Signup = () => {
                                         id="password"
                                         name="password"
                                         type="password"
-                                        ref={register({ required: true })}
+                                        ref={{...register('test', { required: true })}}
                                         autocomplete="current-password"
                                         required
                                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
